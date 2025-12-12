@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Damaris - Askdamaris</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #8607db;
+            --action-orange: #ec730c;
+            --teal: #008080;
+            --gold: #ffea97;
+            --dark-bg: #1a1a1a;
+            --light-text: #ffffff;
+            --gray-text: #666666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-purple), #6505a8);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-purple);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-purple), var(--teal));
+            color: var(--light-text);
+            padding: 120px 2rem 60px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .founder-intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+
+        .founder-image {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--teal));
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8rem;
+            color: var(--gold);
+        }
+
+        .founder-text h2 {
+            font-size: 2.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+
+        .founder-text h3 {
+            font-size: 1.3rem;
+            color: var(--action-orange);
+            margin-bottom: 2rem;
+        }
+
+        .founder-text p {
+            color: var(--gray-text);
+            line-height: 1.8;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .mission-vision {
+            background: #f9f9f9;
+            padding: 60px 2rem;
+            margin: 4rem 0;
+        }
+
+        .mission-vision-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .mv-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .mv-card h2 {
+            color: var(--primary-purple);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+
+        .mv-card p {
+            color: var(--gray-text);
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        .values-section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 3rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-top: 4px solid var(--action-orange);
+            transition: transform 0.3s;
+        }
+
+        .value-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .value-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .value-card h3 {
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .value-card p {
+            color: var(--gray-text);
+            line-height: 1.8;
+        }
+
+        .story-section {
+            background: linear-gradient(135deg, var(--primary-purple), #4a0680);
+            color: var(--light-text);
+            padding: 80px 2rem;
+        }
+
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+
+        .story-content p {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-section {
+            background: var(--teal);
+            color: var(--light-text);
+            padding: 60px 2rem;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background: var(--action-orange);
+            color: var(--light-text);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            font-size: 1.1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(236, 115, 12, 0.4);
+        }
+
+        footer {
+            background: var(--dark-bg);
+            color: var(--light-text);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--light-text);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--action-orange);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--action-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-text);
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary-purple);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                transition: left 0.3s;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .founder-intro {
+                grid-template-columns: 1fr;
+            }
+
+            .founder-image {
+                height: 300px;
+                font-size: 6rem;
+            }
+
+            .mission-vision-content {
+                grid-template-columns: 1fr;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span>Askdamaris</span>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="success.html">Success Stories</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>About Damaris Kakundi</h1>
+        <p>Founder & Chief Career Strategist</p>
+    </div>
+
+    <section class="about-section">
+        <div class="founder-intro">
+            <div class="founder-image">DK</div>
+            <div class="founder-text">
+                <h2>Damaris Kakundi</h2>
+                <h3>Career Development Expert & Mentor</h3>
+                <p>With over a decade of experience in talent development and career coaching, Damaris Kakundi has dedicated her life to empowering African professionals to reach their full potential.</p>
+                <p>Having navigated her own career transformation from entry-level positions to executive leadership, Damaris understands firsthand the challenges and opportunities that African professionals face in today's global marketplace.</p>
+                <p>Her passion for bridging the gap between talent and opportunity led to the creation of Askdamaris, a platform that has helped hundreds of professionals transform their careers and achieve their dreams.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="mission-vision">
+        <div class="mission-vision-content">
+            <div class="mv-card">
+                <h2>Our Mission</h2>
+                <p>To empower African professionals with the skills, strategies, and confidence needed to compete successfully in the global job market and build fulfilling careers that create lasting impact.</p>
+            </div>
+            <div class="mv-card">
+                <h2>Our Vision</h2>
+                <p>A future where every talented African professional has access to the resources, guidance, and opportunities they need to achieve their career aspirations and contribute meaningfully to the global economy.</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="values-section">
+        <h2 class="section-title">Our Core Values</h2>
+        <div class="values-grid">
+            <div class="value-card">
+                <div class="value-icon">💎</div>
+                <h3>Excellence</h3>
+                <p>We are committed to delivering exceptional quality in everything we do, ensuring our clients receive the best possible service and support.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🤝</div>
+                <h3>Empowerment</h3>
+                <p>We believe in equipping professionals with the tools and knowledge they need to take control of their career journeys.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🌍</div>
+                <h3>Impact</h3>
+                <p>We are driven by the positive change we create in the lives of individuals and communities across Africa.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">💪</div>
+                <h3>Integrity</h3>
+                <p>We operate with honesty, transparency, and ethical principles in all our interactions and services.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">🎯</div>
+                <h3>Results-Oriented</h3>
+                <p>We focus on delivering measurable outcomes that truly transform careers and open new opportunities.</p>
+            </div>
+            <div class="value-card">
+                <div class="value-icon">❤️</div>
+                <h3>Passion</h3>
+                <p>We are deeply passionate about seeing African professionals succeed and thrive in their chosen fields.</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="story-section">
+        <div class="story-content">
+            <h2>The Askdamaris Story</h2>
+            <p>Askdamaris was born from a simple observation: talented African professionals often lack access to the career development resources, mentorship, and strategic guidance that could unlock their full potential.</p>
+            <p>After years of working in human resources and talent development, Damaris recognized a consistent pattern. Many professionals possessed incredible skills and potential but struggled to present themselves effectively, navigate career transitions, or access opportunities that matched their capabilities.</p>
+            <p>This realization sparked a mission to create a platform that would democratize access to world-class career development services, making them accessible and relevant to African professionals at all stages of their careers.</p>
+            <p>Today, Askdamaris serves professionals across Kenya and throughout Africa, providing personalized coaching, skills training, and career development services that have helped hundreds of individuals secure better positions, negotiate higher salaries, and build careers they're proud of.</p>
+            <p>Our approach is simple: we identify the gaps, provide the tools to bridge them, and support our clients every step of the way as they grow into the professionals they aspire to be.</p>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2>Ready to Start Your Journey?</h2>
+        <p>Join hundreds of African professionals who have transformed their careers with Askdamaris</p>
+        <a href="https://askdamaris.selar.com/" target="_blank" rel="noopener" class="cta-button">Explore Our Programs</a>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Askdamaris</h3>
+                <p>Bridging the Gap Between Talent and Opportunity</p>
+                <p style="margin-top: 1rem;">Based in Kenya, serving African professionals worldwide.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="about.html">About Damaris</a></li>
+                    <li><a href="success.html">Success Stories</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="Twitter">𝕏</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Facebook">f</a>
+                </div>
+                <p style="margin-top: 1rem;">Email: info@askdamaris.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Askdamaris. Founded by Damaris Kakundi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

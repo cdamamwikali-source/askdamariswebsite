@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - Askdamaris</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-purple: #8607db;
+            --action-orange: #ec730c;
+            --teal: #008080;
+            --gold: #ffea97;
+            --dark-bg: #1a1a1a;
+            --light-text: #ffffff;
+            --gray-text: #666666;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-purple), #6505a8);
+            color: var(--light-text);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-purple);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--light-text);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light-text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .page-header {
+            background: linear-gradient(135deg, var(--primary-purple), var(--teal));
+            color: var(--light-text);
+            padding: 120px 2rem 60px;
+            text-align: center;
+            margin-top: 70px;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .services-section {
+            padding: 80px 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-category {
+            margin-bottom: 5rem;
+        }
+
+        .category-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .category-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-purple);
+            margin-bottom: 1rem;
+        }
+
+        .category-header p {
+            font-size: 1.1rem;
+            color: var(--gray-text);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .service-items {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-item {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--action-orange);
+        }
+
+        .service-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(134, 7, 219, 0.2);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-purple), var(--teal));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-item h3 {
+            color: var(--primary-purple);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-item p {
+            color: var(--gray-text);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.5rem 0;
+            padding-left: 1.5rem;
+            position: relative;
+            color: #555;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--teal);
+            font-weight: bold;
+        }
+
+        .cta-button {
+            background: var(--action-orange);
+            color: var(--light-text);
+            padding: 0.8rem 1.8rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-top: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(236, 115, 12, 0.4);
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-purple), #4a0680);
+            color: var(--light-text);
+            padding: 60px 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .cta-section .cta-button {
+            background: var(--gold);
+            color: var(--primary-purple);
+            font-size: 1.1rem;
+            padding: 1rem 2.5rem;
+        }
+
+        footer {
+            background: var(--dark-bg);
+            color: var(--light-text);
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section a {
+            color: var(--light-text);
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--action-orange);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-purple);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--action-orange);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray-text);
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            nav ul {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background: var(--primary-purple);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                transition: left 0.3s;
+            }
+
+            nav ul.active {
+                left: 0;
+            }
+
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            .category-header h2 {
+                font-size: 2rem;
+            }
+
+            .service-items {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <div class="logo-icon">A</div>
+                <span>Askdamaris</span>
+            </div>
+            <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+            <ul id="navMenu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="success.html">Success Stories</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="page-header">
+        <h1>Our Services</h1>
+        <p>Comprehensive solutions designed to bridge the gap between your current reality and your career aspirations</p>
+    </div>
+
+    <section class="services-section">
+        <div class="service-category">
+            <div class="category-header">
+                <h2>Career Development Services</h2>
+                <p>Transform your professional profile and positioning in the job market</p>
+            </div>
+            <div class="service-items">
+                <div class="service-item">
+                    <div class="service-icon">🎯</div>
+                    <h3>Interview Preparation</h3>
+                    <p>Ace your interviews with confidence through comprehensive preparation and practice.</p>
+                    <ul class="service-features">
+                        <li>Mock interview sessions</li>
+                        <li>Common questions preparation</li>
+                        <li>STAR method training</li>
+                        <li>Body language coaching</li>
+                        <li>Follow-up strategies</li>
+                    </ul>
+                    <a href="https://askdamaris.selar.com/" target="_blank" rel="noopener" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon">📋</div>
+                    <h3>Career Strategy Planning</h3>
+                    <p>Develop a clear roadmap for achieving your professional goals with personalized guidance.</p>
+                    <ul class="service-features">
+                        <li>Career assessment and goal setting</li>
+                        <li>Industry insights and trends</li>
+                        <li>Career transition support</li>
+                        <li>Professional positioning</li>
+                        <li>Action plan development</li>
+                    </ul>
+                    <a href="https://askdamaris.selar.com/" target="_blank" rel="noopener" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon">💡</div>
+                    <h3>Personal Branding</h3>
+                    <p>Build and communicate your unique professional brand effectively in the marketplace.</p>
+                    <ul class="service-features">
+                        <li>Brand identity development</li>
+                        <li>Online presence strategy</li>
+                        <li>Content creation guidance</li>
+                        <li>Professional positioning</li>
+                        <li>Networking strategies</li>
+                    </ul>
+                    <a href="https://askdamaris.selar.com/" target="_blank" rel="noopener" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-category">
+            <div class="category-header">
+                <h2>Skills Training Programs</h2>
+                <p>Acquire in-demand skills that make you competitive in the global marketplace</p>
+            </div>
+            <div class="service-items">
+                <div class="service-item">
+                    <div class="service-icon">💻</div>
+                    <h3>Digital Skills Bootcamp</h3>
+                    <p>Master essential digital tools and technologies that employers are looking for.</p>
+                    <ul class="service-features">
+                        <li>Microsoft Office Suite mastery</li>
+                        <li>Google Workspace training</li>
+                        <li>Project management tools</li>
+                        <li>Data analysis basics</li>
+                        <li>Digital marketing fundamentals</li>
+                    </ul>
+                    <a href="https://askdamaris.selar.com/" target="_blank" rel="noopener" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon">🗣️</div>
+                    <h3>Professional Communication</h3>
+                    <p>Enhance your communication skills for professional success.</p>
+                    <ul class="service-features">
+                        <li>Business writing excellence</li>
+                        <li>Presentation skills</li>
+                        <li>Email etiquette</li>
+                        <li>Negotiation techniques</li>
+                        <li>Cross-cultural communication</li>
+                    </ul>
+                    <a href="https://askdamaris.selar.com/" target="_blank" rel="noopener" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon">👔</div>
+                    <h3>Leadership Development</h3>
+                    <p>Develop the leadership skills needed to advance in your career.</p>
+                    <ul class="service-features">
+                        <li>Emotional intelligence training</li>
+                        <li>Team management skills</li>
+                        <li>Strategic thinking</li>
+                        <li>Decision-making frameworks</li>
+                        <li>Conflict resolution</li>
+                    </ul>
+                    <a href="https://askdamaris.selar.com/" target="_blank" rel="noopener" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-category">
+            <div class="category-header">
+                <h2>Personalized Coaching & Mentorship</h2>
+                <p>One-on-one guidance tailored to your unique career journey and goals</p>
+            </div>
+            <div class="service-items">
+                <div class="service-item">
+                    <div class="service-icon">🎓</div>
+                    <h3>Career Strategy Coaching</h3>
+                    <p>Develop a clear roadmap for achieving your professional goals.</p>
+                    <ul class="service-features">
+                        <li>Personalized career assessment</li>
+                        <li>Goal setting and planning</li>
+                        <li>Industry insights and trends</li>
+                        <li>Career transition support</li>
+                        <li>Monthly strategy sessions</li>
+                    </ul>
+                    <a href="https://askdamaris.selar.com/" target="_blank" rel="noopener" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon">🚀</div>
+                    <h3>Executive Mentorship</h3>
+                    <p>Learn from experienced professionals who have walked the path you aspire to.</p>
+                    <ul class="service-features">
+                        <li>Industry expert matching</li>
+                        <li>Bi-weekly mentorship calls</li>
+                        <li>Career advice and guidance</li>
+                        <li>Network introductions</li>
+                        <li>Accountability partnership</li>
+                    </ul>
+                    <a href="https://askdamaris.selar.com/" target="_blank" rel="noopener" class="cta-button">Get Started</a>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-icon">⭐</div>
+                    <h3>Business Coaching</h3>
+                    <p>Build and grow your entrepreneurial ventures with strategic guidance.</p>
+                    <ul class="service-features">
+                        <li>Business strategy development</li>
+                        <li>Market positioning</li>
+                        <li>Content creation guidance</li>
+                        <li>Client acquisition strategies</li>
+                        <li>Sustainability planning</li>
+                    </ul>
+                    <a href="https://askdamaris.selar.com/" target="_blank" rel="noopener" class="cta-button">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="cta-section">
+        <h2>Ready to Transform Your Career?</h2>
+        <p>Let's work together to bridge the gap between where you are and where you want to be</p>
+        <a href="https://askdamaris.selar.com/" target="_blank" rel="noopener" class="cta-button">Explore Our Programs</a>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Askdamaris</h3>
+                <p>Bridging the Gap Between Talent and Opportunity</p>
+                <p style="margin-top: 1rem;">Based in Kenya, serving African professionals worldwide.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="services.html">Our Services</a></li>
+                    <li><a href="about.html">About Damaris</a></li>
+                    <li><a href="success.html">Success Stories</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Connect With Us</h3>
+                <div class="social-links">
+                    <a href="#" aria-label="LinkedIn">in</a>
+                    <a href="#" aria-label="Twitter">𝕏</a>
+                    <a href="#" aria-label="Instagram">📷</a>
+                    <a href="#" aria-label="Facebook">f</a>
+                </div>
+                <p style="margin-top: 1rem;">Email: info@askdamaris.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Askdamaris. Founded by Damaris Kakundi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('navMenu');
+            menu.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
